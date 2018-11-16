@@ -20,6 +20,7 @@ public class Course {
       }
       return exercises.get(week);
     }
+    
     public int getNumberOfExercises(){
       int total=0;
       for (int p : exercises){

@@ -7,25 +7,35 @@ import org.apache.http.client.fluent.Request;
 
 public class Main {
 
-    private static Submission[] getSubs(String studentNr){
+    private static Submission[] getSubs(String studentNr) {
         try{
             String url = "https://studies.cs.helsinki.fi/courses/students/"+studentNr+"/submissions";
             String bodyText = Request.Get(url).execute().returnContent().asString();
 
             Gson mapper = new Gson();
             return mapper.fromJson(bodyText, Submission[].class);
-        } catch(Exception e){
+        } catch (Exception e) {
             return null;
         }
     }
-    private static Course[] getCourses(){
+    private static Course[] getCourses() {
         try{
             String url = "https://studies.cs.helsinki.fi/courses/courseinfo";
             String bodyText = Request.Get(url).execute().returnContent().asString();
 
             Gson mapper = new Gson();
             return mapper.fromJson(bodyText, Course[].class);
-        } catch(Exception e){
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+    private static CourseStat getCourseStat(String course) {
+        try{
+            String url="https://studies.cs.helsinki.fi/courses/"+course+"/stats";
+            String bodyText = Request.Get(url).execute().returnContent().asString();
+            return new CourseStat(bodyText);
+        } catch (Exception e) {
             return null;
         }
     }
@@ -46,6 +56,9 @@ public class Main {
         }
         System.out.println();
         System.out.println("yhteensä: "+totalExercises+"/"+maxExercises+" tehtävää "+totalTime+" tuntia");
+        System.out.println();
+        CourseStat stat=getCourseStat(course.getName());
+        System.out.println(stat);
         System.out.println();
     }
 
