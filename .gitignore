@@ -4,6 +4,6 @@ Kurssistatistiikka/bin/
 HelloCucumber/.gradle/
 HelloCucumber/build/
 HelloCucumber/bin/
-LoginCucumber/.gradle/
-LoginCucumber/build/
-LoginCucumber/bin/
+WebLogin/.gradle/
+WebLogin/build/
+WebLogin/bin/

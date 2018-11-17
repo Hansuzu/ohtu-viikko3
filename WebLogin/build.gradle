@@ -20,6 +20,7 @@ project.ext {
 }
 
 dependencies {
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-htmlunit-driver',version: seleniumVersion
     compile 'com.google.guava:guava:20.0'
     testCompile 'junit:junit:4.12'
     compile group: 'com.sparkjava', name: 'spark-core', version: '2.2'
